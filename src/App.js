@@ -2,7 +2,7 @@ import { useState } from "react";
 import Player from "./component/player";
 import { players as data } from "./data.js";
 import style from "./App.css";
-import Button from "./component/button";
+import ButtonCustom from "./component/button";
 
 function App() {
   const [players, setPlayers] = useState(data);
@@ -22,10 +22,11 @@ function App() {
   };
   const addPlayer = () => {
     let person = prompt("Please enter your name:", "Harry Potter");
+    let onoo = parseInt(prompt("Please enter your score:", "20"));
     if (person == null || person == "") {
       alert("Utga oruulna uu");
     } else {
-      players.push({ name: person, score: 0 });
+      players.push({ name: person, score: onoo });
     }
     console.log(players);
     setPlayers([...players]);
@@ -37,7 +38,7 @@ function App() {
   };
   return (
     <div className="flex">
-      <Button addPerson={addPlayer} />
+      <ButtonCustom addPerson={addPlayer} />
       {players.map((i) => {
         return (
           <div className="singleItem" key={i.name}>
